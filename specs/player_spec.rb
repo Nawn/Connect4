@@ -93,8 +93,25 @@ describe Player do
   end
 
   describe "#turn" do
-    before(:each) do
+    before(:all) do
       @player = Player.new(:O)
+      @result = @player.turn
+    end
+
+    it "Returns an Array" do
+    	expect(@result).to be_instance_of Array
+    end
+
+    it "is a size of 2" do
+    	expect(@result.size).to eql(2)
+    end
+
+    it "first element is the position, Integer" do
+    	expect(@result[0]).to be_instance_of Integer
+    end
+
+    it "second element will be the input letter, Symbol" do
+    	expect(@result[1]).to be_instance_of Symbol
     end
   end
 end
