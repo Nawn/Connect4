@@ -20,5 +20,25 @@ describe Board do
 				expect(@board.height).to eql(6)
 			end
 		end
+
+    context "when given input" do
+      before(:each) do
+        @board = Board.new(10,15)
+      end
+
+      it "has first params number of columns" do
+        expect(@board.columns.length).to eql(10)
+      end
+
+      it "has second param number of height" do
+        expect(@board.height).to eql(15)
+      end
+    end
+
+    context "When given invalid input type" do
+      it "raises an Argument Error" do
+        expect{Board.new(Array(1..10))}.to raise_error(ArgumentError, "Invalid input, only accepts 2 Integers")
+      end
+    end
 	end
 end
