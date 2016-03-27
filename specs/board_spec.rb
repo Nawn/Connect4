@@ -41,4 +41,44 @@ describe Board do
       end
     end
 	end
+
+  describe "#turn" do
+    before(:each) do
+      @board = Board.new
+    end
+
+    context "when given no input" do
+      it "raises an argument error" do
+        expect{@board.turn()}.to raise_error(ArgumentError, "Input is required")
+      end
+    end
+
+    context "when given wrong input" do
+      context "Given Non-Array" do
+        it "raises ArgumentError" do
+          expect{@board.turn("okay sure")}.to raise_error(ArgumentError, "Input must be Array")
+          expect{@board.turn(5)}.to raise_error(ArgumentError, "Input must be Array")
+        end
+      end
+
+      context "When given incorrectly sized Array" do
+        it "raises ArgumentError" do
+          expect{@board.turn([2, :X, "Poop"])}.to raise_error(ArgumentError, "Array size must be 2")
+          expect{@board.turn([2])}.to raise_error(ArgumentError, "Array size must be 2")
+        end
+      end
+
+      context "When given inappropriate data types" do
+        it "raises ArgumentError" do
+          expect{@board.turn([5, "caca"])}.to raise_error(ArgumentError, "Must be Array with Integer, Symbol")
+          expect{@board.turn([:X, 12])}.to raise_error(ArgumentError, "Must be Array with Integer, Symbol")
+          expect{@board.turn(["5", ["caca"]])}.to raise_error(ArgumentError, "Must be Array with Integer, Symbol")
+        end
+      end
+    end
+
+    context "when given correct input" do
+      #To-Do
+    end
+  end
 end
