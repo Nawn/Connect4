@@ -45,6 +45,10 @@ describe Board do
   describe "#turn" do
     before(:each) do
       @board = Board.new
+      @empty_rows = []
+      7.times do
+        @empty_rows << []
+      end
     end
 
     context "when given no input" do
@@ -78,7 +82,33 @@ describe Board do
     end
 
     context "when given correct input" do
-      #To-Do
+      it "does not raise error" do
+        expect{@board.turn([4, :X])}.not_to raise_error
+      end
+
+      it "adds 1st index symbol to column" do
+        expect(@board.columns).to eql(@empty_rows)
+        @board.turn([2,:X])
+        @empty_rows[2] << :X
+        expect(@board.columns).to eql(@empty_rows)
+      end
+
+      context "when adding to non-existing column" do
+        it "raises StandardError" do
+          expect{@board.turn([9, :X])}.to raise_error(StandardError, "Column does not exist")
+        end
+      end
+
+      context "when adding to a full column" do
+        it "raises a Standard Error" do
+          expect{@board.turn([4, :X])}.not_to raise_error
+          @board.height-1.times do
+            @board.turn([4, :X])
+          end
+          expect(@board.columns[4].size).to eql(6)
+          expect{@board.turn([4, :X])}.to raise_error(StandardError, "Column Index: 4, is full")
+        end
+      end
     end
   end
 end
