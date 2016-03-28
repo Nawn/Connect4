@@ -133,13 +133,7 @@ describe Board do
   		end
 
   		context "when victory is 4 diagonal" do
-  			context "when left diagonal" do
-
-  			end
-
-  			context "when right diagonal" do
-
-  			end
+  			
   		end
   	end
 
