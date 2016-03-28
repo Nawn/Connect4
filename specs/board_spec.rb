@@ -156,7 +156,15 @@ describe Board do
   		context "when victory is 4 diagonal" do
   			before(:each) do
           @board = Board.new
-          #Create code for diagonal
+          4.times do |num|
+            num+1.times do |number|
+              if number == num
+                @board.turn([num, :X])
+                break
+              end
+              @board.turn([num, :O])
+            end
+          end
         end
 
         it "returns true" do
@@ -167,7 +175,6 @@ describe Board do
   	end
 
   	context "when there is no room, and no victory" do
-
   	end
   end
 end
