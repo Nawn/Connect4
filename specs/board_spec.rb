@@ -111,4 +111,40 @@ describe Board do
       end
     end
   end
+
+  describe "#over?/#victory?" do
+  	context "when there is room, and no one has won" do
+  		before (:each) do
+  			@board = Board.new
+  		end
+
+  		it "returns false" do
+  			expect(@board.over?).to be false
+  		end
+  	end
+
+  	context "when there is room, but a victory is reached" do
+  		context "when victory is a 4 horizontal" do
+
+  		end
+
+  		context "when victory is a 4 vertical" do
+
+  		end
+
+  		context "when victory is 4 diagonal" do
+  			context "when left diagonal" do
+
+  			end
+
+  			context "when right diagonal" do
+
+  			end
+  		end
+  	end
+
+  	context "when there is no room, and no victory" do
+
+  	end
+  end
 end
