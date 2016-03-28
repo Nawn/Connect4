@@ -120,20 +120,44 @@ describe Board do
 
   		it "returns false" do
   			expect(@board.over?).to be false
+        expect(@board.victory?).to be false
   		end
   	end
 
   	context "when there is room, but a victory is reached" do
   		context "when victory is a 4 horizontal" do
+        before(:each) do
+          @board = Board.new
+          4.times do |number|
+            @board.turn([number, :X])
+          end
+        end
 
+        it "returns true" do
+          expect(@board.over?).to be true
+          expect(@board.victory?).to be true
+        end
   		end
 
   		context "when victory is a 4 vertical" do
+        before(:each) do
+          @board = Board.new
+          4.times do
+            @board.turn([0, :X])
+          end
+        end
 
+        it "returns true" do
+          expect(@board.over?).to be true
+          expect(@board.victory?).to be true
+        end
   		end
 
   		context "when victory is 4 diagonal" do
-  			
+  			before(:each) do
+          @board = Board.new
+          #Create code for diagonal
+        end
   		end
   	end
 
