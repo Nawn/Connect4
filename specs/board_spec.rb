@@ -173,8 +173,5 @@ describe Board do
         end
   		end
   	end
-
-  	context "when there is no room, and no victory" do
-  	end
   end
 end
