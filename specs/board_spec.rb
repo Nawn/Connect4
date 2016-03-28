@@ -158,6 +158,11 @@ describe Board do
           @board = Board.new
           #Create code for diagonal
         end
+
+        it "returns true" do
+          expect(@board.over?).to be true
+          expect(@board.victory?).to be true
+        end
   		end
   	end
 
