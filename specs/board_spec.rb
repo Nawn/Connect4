@@ -156,8 +156,9 @@ describe Board do
   			before(:each) do
           @board = Board.new
           4.times do |num|
-            num+1.times do |number|
-              if number == num
+            stack = num + 1
+            stack.times do |number|
+              if number == stack - 1
                 @board.turn([num, :X])
                 break
               end

@@ -22,4 +22,35 @@ class Board
 		raise StandardError.new("Column Index: #{input_array[0]}, is full") if @columns[input_array[0]].size >= @height
 		@columns[input_array[0]] += [input_array[1]]
 	end
+
+  def over?
+    victory?() || @columns.any? do |column|
+      column.any? {|current| current.nil?}
+    end
+  end
+
+  def victory?
+    @columns.each_with_index do |column, index|
+      column.each_with_index do |sym, idx|
+        return true if [sym, @columns[index+1][idx], @columns[index+2][idx], @columns[index+3][idx]].all? do |current|
+          sym == current
+        end
+
+        return true if [sym, @columns[index][idx+1], @columns[index][idx+2], @columns[index][idx+3]].all? do |current|
+          sym == current
+        end
+
+        right_diag = [sym, @columns[index+1][idx+1], @columns[index+2][idx+2], @columns[index+3][idx+3]].all? do |current| 
+          sym == current
+        end
+
+        left_diag = [sym, @columns[index-1][idx+1], @columns[index-2][idx+2], @columns[index-3][idx+3]].all? do |current|
+          sym == current
+        end
+
+        return true if right_diag || left_diag
+      end
+    end
+    false
+  end
 end
