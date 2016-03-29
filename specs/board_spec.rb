@@ -42,7 +42,7 @@ describe Board do
     end
 	end
 
-  describe "#turn" do
+  describe "#turn", :focus => true do
     before(:each) do
       @board = Board.new
       @empty_rows = []
