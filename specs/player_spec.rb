@@ -1,6 +1,9 @@
 require_relative 'spec_helper.rb'
 
 describe Player do
+  after(:each) do
+    Player.clean
+  end
   describe "#new" do
     context "when given input letter" do
       context "when input is symbol" do
@@ -44,8 +47,8 @@ describe Player do
           player = Player.new(:x)
           expect(player.letter).to eql(:X)
 
-          player2 = Player.new("x")
-          expect(player2.letter).to eql(:X)
+          player2 = Player.new("o")
+          expect(player2.letter).to eql(:O)
         end
       end
 
