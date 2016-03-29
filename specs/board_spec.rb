@@ -42,7 +42,7 @@ describe Board do
     end
 	end
 
-  describe "#turn", :focus => true do
+  describe "#turn" do
     before(:each) do
       @board = Board.new
       @empty_rows = []
@@ -101,8 +101,7 @@ describe Board do
 
       context "when adding to a full column" do
         it "raises a Standard Error" do
-          expect{@board.turn([4, :X])}.not_to raise_error
-          @board.height-1.times do
+          @board.height.times do
             @board.turn([4, :X])
           end
           expect(@board.columns[4].size).to eql(6)
