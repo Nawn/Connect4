@@ -17,4 +17,10 @@ class Player
     @letter = letter
     @@used << letter
   end
+
+  def turn(input_array = nil)
+    puts "Please input index of column to drop letter in!: \n"
+    answer = Integer(gets.chomp)
+    [answer, @letter]
+  end
 end
